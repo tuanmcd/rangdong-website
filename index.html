@@ -111,7 +111,15 @@ h2,h3,h4{color:var(--navy)}
 .hero-stat b{display:block;font-family:var(--font-display);font-size:1.7rem;font-weight:800;color:#fff}
 .hero-stat span{font-size:.82rem;color:rgba(255,255,255,.55)}
 .hero-visual{position:relative;min-height:340px}
-.hero-visual svg{width:100%;height:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.45))}
+.hero-collage{position:relative;height:440px}
+.hero-shot{position:absolute;background:#F5F5F5;border-radius:18px;box-shadow:0 24px 48px rgba(0,0,0,.45);overflow:hidden;animation:floaty 7s ease-in-out infinite}
+.hero-shot img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-shot.s1{width:54%;aspect-ratio:1;left:0;top:4%;transform:rotate(-4deg)}
+.hero-shot.s2{width:42%;aspect-ratio:1;right:2%;top:0;transform:rotate(3deg);animation-delay:1.2s}
+.hero-shot.s3{width:46%;aspect-ratio:1;right:10%;bottom:2%;transform:rotate(-2deg);animation-delay:2.4s}
+.hero-shot figcaption{position:absolute;left:0;right:0;bottom:0;background:rgba(23,37,90,.82);color:#fff;font-size:.72rem;font-weight:600;padding:.35rem .6rem;text-align:center}
+@keyframes floaty{0%,100%{margin-top:0}50%{margin-top:-10px}}
+@media (prefers-reduced-motion:reduce){.hero-shot{animation:none}}
 @media (max-width:920px){
   .hero .container{grid-template-columns:1fr}
   .hero-visual{display:none}
@@ -173,9 +181,9 @@ h2,h3,h4{color:var(--navy)}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:1.8rem}
 .product-card{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s;display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
-.product-media{position:relative;background:linear-gradient(160deg,#F2EFE9,#E9E5DC);aspect-ratio:4/3;display:grid;place-items:center;padding:1.4rem}
-.product-media svg{width:64%;height:auto;filter:drop-shadow(0 10px 18px rgba(24,26,31,.18));transition:transform .4s var(--ease)}
-.product-card:hover .product-media svg{transform:translateY(-4px) scale(1.04)}
+.product-media{position:relative;background:#F5F5F5;aspect-ratio:4/3;display:grid;place-items:center;padding:.6rem;overflow:hidden}
+.product-media img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .45s var(--ease)}
+.product-card:hover .product-media img{transform:translateY(-4px) scale(1.06)}
 .badge{position:absolute;top:.8rem;left:.8rem;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .6rem;border-radius:6px;color:#fff;background:var(--green)}
 .badge.gold{background:var(--gold);color:var(--ink)}
 .badge.steel{background:var(--steel)}
@@ -334,28 +342,21 @@ h2,h3,h4{color:var(--navy)}
         <div class="hero-stat"><b>24 tháng</b><span>bảo hành 1-đổi-1</span></div>
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <!-- Mặt công tắc + aptomat minh hoạ -->
-      <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="30" width="200" height="200" rx="18" fill="#F4F1EA"/>
-        <rect x="40" y="30" width="200" height="200" rx="18" stroke="#D9D4C9" stroke-width="2"/>
-        <rect x="70" y="60" width="140" height="140" rx="10" fill="#FFFFFF" stroke="#E3DED2" stroke-width="2"/>
-        <rect x="88" y="78" width="104" height="50" rx="6" fill="#EFECE4"/>
-        <rect x="88" y="132" width="104" height="50" rx="6" fill="#FFF"/>
-        <rect x="88" y="132" width="104" height="50" rx="6" stroke="#E3DED2" stroke-width="1.5"/>
-        <circle cx="140" cy="103" r="5" fill="#D6001C"/>
-        <rect x="250" y="90" width="130" height="220" rx="14" fill="#23262D"/>
-        <rect x="262" y="104" width="106" height="150" rx="8" fill="#2E323B"/>
-        <rect x="276" y="118" width="26" height="122" rx="5" fill="#3A3F4A"/>
-        <rect x="281" y="128" width="16" height="40" rx="4" fill="#D6001C"/>
-        <rect x="311" y="118" width="26" height="122" rx="5" fill="#3A3F4A"/>
-        <rect x="316" y="172" width="16" height="40" rx="4" fill="#F2A900"/>
-        <rect x="262" y="264" width="106" height="30" rx="6" fill="#1B1E24"/>
-        <circle cx="278" cy="279" r="5" fill="#37D67A"/>
-        <rect x="292" y="274" width="60" height="10" rx="3" fill="#3A3F4A"/>
-        <path d="M150 250c40 30 70 30 110 8" stroke="#F2A900" stroke-width="2.5" stroke-dasharray="6 7" stroke-linecap="round"/>
-        <circle cx="150" cy="250" r="6" fill="#F2A900"/>
-      </svg>
+    <div class="hero-visual">
+      <div class="hero-collage">
+        <figure class="hero-shot s1">
+          <img src="images/cong-tac-cam-ung.jpg" alt="Công tắc cảm ứng WiFi Rạng Đông" width="400" height="400" loading="eager" fetchpriority="high">
+          <figcaption>Công tắc cảm ứng WiFi</figcaption>
+        </figure>
+        <figure class="hero-shot s2">
+          <img src="images/aptomat-mcb-2p.jpg" alt="Aptomat MCB 2P Rạng Đông" width="320" height="320">
+          <figcaption>Aptomat RD.MCB 2P</figcaption>
+        </figure>
+        <figure class="hero-shot s3">
+          <img src="images/quat-hut-am-tuong.jpg" alt="Quạt hút gió âm tường Rạng Đông" width="340" height="340">
+          <figcaption>Quạt hút âm tường 23W</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -456,27 +457,43 @@ h2,h3,h4{color:var(--navy)}
     <div class="products-head">
       <div>
         <span class="eyebrow">Sản phẩm nổi bật</span>
-        <h2 class="section-title">Chọn theo dòng sản phẩm</h2>
+        <h2 class="section-title">Chọn theo nhóm sản phẩm</h2>
       </div>
-      <div class="series-tabs" role="tablist" aria-label="Lọc theo dòng">
+      <div class="series-tabs" role="tablist" aria-label="Lọc theo nhóm">
         <button class="series-tab active" data-series="all">Tất cả</button>
-        <button class="series-tab" data-series="aura">RD Aura — Cao cấp</button>
-        <button class="series-tab" data-series="vega">RD Vega — Tiêu chuẩn</button>
-        <button class="series-tab" data-series="prime">RD Prime — Công trình</button>
+        <button class="series-tab" data-series="switch">Công tắc &amp; Ổ cắm</button>
+        <button class="series-tab" data-series="breaker">Aptomat</button>
+        <button class="series-tab" data-series="fan">Quạt hút &amp; Tủ điện</button>
       </div>
     </div>
 
     <div class="product-grid" id="productGrid">
 
-      <article class="product-card reveal" data-series="aura">
+      <article class="product-card reveal" data-series="switch">
         <div class="product-media">
-          <span class="badge">Bán chạy</span>
-          <svg viewBox="0 0 120 100" fill="none"><rect x="20" y="8" width="80" height="84" rx="8" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><rect x="34" y="24" width="52" height="52" rx="5" fill="#F1EDE4"/><circle cx="60" cy="50" r="4" fill="#D6001C"/></svg>
+          <span class="badge gold">Smart</span>
+          <img src="images/cong-tac-cam-ung.jpg" alt="Công tắc cảm ứng WiFi Rạng Đông CTCU-WF-CN-01T" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Aura</span>
-          <h4 class="product-name">Công tắc đơn 1 chiều, mặt kính mờ</h4>
-          <span class="product-code">Mã: AR-S101 • 16AX 250V</span>
+          <span class="product-series">Công tắc thông minh</span>
+          <h4 class="product-name">Công tắc cảm ứng WiFi 1 nút, mặt kính</h4>
+          <span class="product-code">Mã: CTCU-WF-CN-01T</span>
+          <div class="product-foot">
+            <span class="price">490.000<small> đ</small></span>
+            <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card reveal" data-series="switch">
+        <div class="product-media">
+          <span class="badge">Bán chạy</span>
+          <img src="images/o-cam-3-chau.jpg" alt="Ổ cắm 3 chấu 16A Rạng Đông OC10-3C" loading="lazy" width="400" height="300">
+        </div>
+        <div class="product-body">
+          <span class="product-series">Ổ cắm điện</span>
+          <h4 class="product-name">Ổ cắm kéo dài 3 ổ 3 chấu 16A</h4>
+          <span class="product-code">Mã: OC10-3C • 16A 250V</span>
           <div class="product-foot">
             <span class="price">128.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -484,30 +501,15 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="aura">
-        <div class="product-media">
-          <svg viewBox="0 0 120 100" fill="none"><rect x="20" y="8" width="80" height="84" rx="8" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><circle cx="60" cy="50" r="24" fill="#F1EDE4"/><circle cx="52" cy="50" r="3" fill="#3A3E47"/><circle cx="68" cy="50" r="3" fill="#3A3E47"/><circle cx="60" cy="38" r="2.5" fill="#3A3E47"/></svg>
-        </div>
-        <div class="product-body">
-          <span class="product-series">RD Aura</span>
-          <h4 class="product-name">Ổ cắm đôi 3 chấu có màn che an toàn</h4>
-          <span class="product-code">Mã: AR-O326 • 16A 250V</span>
-          <div class="product-foot">
-            <span class="price">156.000<small> đ</small></span>
-            <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card reveal" data-series="aura">
+      <article class="product-card reveal" data-series="switch">
         <div class="product-media">
           <span class="badge gold">Mới</span>
-          <svg viewBox="0 0 120 100" fill="none"><rect x="20" y="8" width="80" height="84" rx="8" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><circle cx="47" cy="50" r="16" fill="#F1EDE4"/><rect x="70" y="36" width="10" height="12" rx="2" fill="#F1EDE4" stroke="#C9C3B5"/><rect x="70" y="54" width="10" height="12" rx="2" fill="#F1EDE4" stroke="#C9C3B5"/><circle cx="42" cy="50" r="2.5" fill="#3A3E47"/><circle cx="52" cy="50" r="2.5" fill="#3A3E47"/></svg>
+          <img src="images/o-cam-usb.jpg" alt="Ổ cắm tích hợp cổng USB Rạng Đông OC02-USB" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Aura</span>
-          <h4 class="product-name">Ổ cắm đa năng + 2 cổng sạc USB-A/C</h4>
-          <span class="product-code">Mã: AR-USB2C • 5V 3.4A</span>
+          <span class="product-series">Ổ cắm điện</span>
+          <h4 class="product-name">Ổ cắm đôi tích hợp 2 cổng sạc USB</h4>
+          <span class="product-code">Mã: OC02-USB • 5V 3.4A</span>
           <div class="product-foot">
             <span class="price">385.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -515,14 +517,14 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="vega">
+      <article class="product-card reveal" data-series="breaker">
         <div class="product-media">
-          <svg viewBox="0 0 120 100" fill="none"><rect x="38" y="6" width="44" height="88" rx="6" fill="#23262D"/><rect x="47" y="22" width="26" height="34" rx="4" fill="#3A3F4A"/><rect x="52" y="28" width="16" height="14" rx="3" fill="#D6001C"/><rect x="47" y="64" width="26" height="8" rx="2" fill="#3A3F4A"/></svg>
+          <img src="images/aptomat-mcb-2p.jpg" alt="Aptomat MCB 2P Rạng Đông RD.MCB 2P2E" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Vega</span>
-          <h4 class="product-name">Aptomat MCB 2P 32A, cắt dòng 6kA</h4>
-          <span class="product-code">Mã: VG-MCB232 • IEC 60898</span>
+          <span class="product-series">Aptomat</span>
+          <h4 class="product-name">Aptomat MCB 2P, cắt dòng 6kA</h4>
+          <span class="product-code">Mã: RD.MCB 2P2E C6 • IEC 60898</span>
           <div class="product-foot">
             <span class="price">142.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -530,15 +532,15 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="vega">
+      <article class="product-card reveal" data-series="breaker">
         <div class="product-media">
           <span class="badge steel">Chống giật</span>
-          <svg viewBox="0 0 120 100" fill="none"><rect x="30" y="6" width="60" height="88" rx="6" fill="#23262D"/><rect x="40" y="22" width="18" height="34" rx="4" fill="#3A3F4A"/><rect x="62" y="22" width="18" height="34" rx="4" fill="#3A3F4A"/><rect x="44" y="28" width="10" height="14" rx="2" fill="#F2A900"/><rect x="66" y="28" width="10" height="14" rx="2" fill="#F2A900"/><circle cx="60" cy="72" r="7" fill="#3A3F4A"/><circle cx="60" cy="72" r="3" fill="#37D67A"/></svg>
+          <img src="images/aptomat-rcbo.jpg" alt="Aptomat chống giật RCBO Rạng Đông RD.RCBO 1P+N" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Vega</span>
-          <h4 class="product-name">RCBO chống giật 2P 32A / 30mA</h4>
-          <span class="product-code">Mã: VG-RCBO32 • IEC 61009</span>
+          <span class="product-series">Aptomat</span>
+          <h4 class="product-name">Aptomat chống giật RCBO 1P+N 30mA</h4>
+          <span class="product-code">Mã: RD.RCBO 1P+N • IEC 61009</span>
           <div class="product-foot">
             <span class="price">298.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -546,14 +548,14 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="vega">
+      <article class="product-card reveal" data-series="switch">
         <div class="product-media">
-          <svg viewBox="0 0 120 100" fill="none"><rect x="34" y="26" width="24" height="24" rx="4" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><rect x="62" y="26" width="24" height="24" rx="4" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><rect x="34" y="54" width="24" height="24" rx="4" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><rect x="40" y="32" width="12" height="12" rx="2" fill="#F1EDE4"/><rect x="68" y="32" width="12" height="12" rx="2" fill="#F1EDE4"/><rect x="40" y="60" width="12" height="12" rx="2" fill="#F1EDE4"/></svg>
+          <img src="images/hat-cong-tac.jpg" alt="Hạt công tắc 2 chiều 16A Rạng Đông HOC03-2C-16A" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Vega</span>
-          <h4 class="product-name">Hạt công tắc 2 chiều 16AX (lắp ghép)</h4>
-          <span class="product-code">Mã: VG-H216 • size S</span>
+          <span class="product-series">Hạt công tắc</span>
+          <h4 class="product-name">Hạt công tắc 2 chiều 16A (lắp ghép)</h4>
+          <span class="product-code">Mã: HOC03-2C-16A</span>
           <div class="product-foot">
             <span class="price">36.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -561,14 +563,14 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="prime">
+      <article class="product-card reveal" data-series="fan">
         <div class="product-media">
-          <svg viewBox="0 0 120 100" fill="none"><rect x="22" y="14" width="76" height="72" rx="10" fill="#fff" stroke="#DDD8CC" stroke-width="2"/><circle cx="60" cy="50" r="26" fill="#F1EDE4"/><path d="M60 50c2-9 8-13 13-11 4 2 5 7 1 11-4 5-10 4-14 0Zm0 0c-2 9-8 13-13 11-4-2-5-7-1-11 4-5 10-4 14 0Z" fill="#B8B2A4"/><circle cx="60" cy="50" r="4" fill="#3A3E47"/></svg>
+          <img src="images/quat-hut-am-tuong.jpg" alt="Quạt hút gió âm tường Rạng Đông QHAT01-CD 23W" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Prime</span>
-          <h4 class="product-name">Quạt hút gió âm trần 25W, ống 100mm</h4>
-          <span class="product-code">Mã: PR-QAT25 • 180 m³/h</span>
+          <span class="product-series">Quạt hút gió</span>
+          <h4 class="product-name">Quạt hút gió âm tường 23W, 200×200</h4>
+          <span class="product-code">Mã: QHAT01-CD</span>
           <div class="product-foot">
             <span class="price">465.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
@@ -576,15 +578,15 @@ h2,h3,h4{color:var(--navy)}
         </div>
       </article>
 
-      <article class="product-card reveal" data-series="prime">
+      <article class="product-card reveal" data-series="fan">
         <div class="product-media">
           <span class="badge">Công trình</span>
-          <svg viewBox="0 0 120 100" fill="none"><rect x="24" y="12" width="72" height="76" rx="6" fill="#23262D"/><rect x="32" y="20" width="56" height="44" rx="4" fill="#2E323B"/><rect x="38" y="26" width="10" height="32" rx="2" fill="#3A3F4A"/><rect x="52" y="26" width="10" height="32" rx="2" fill="#3A3F4A"/><rect x="66" y="26" width="10" height="32" rx="2" fill="#3A3F4A"/><rect x="40" y="30" width="6" height="10" rx="1.5" fill="#D6001C"/><rect x="54" y="30" width="6" height="10" rx="1.5" fill="#D6001C"/><rect x="68" y="30" width="6" height="10" rx="1.5" fill="#D6001C"/><rect x="32" y="70" width="56" height="10" rx="3" fill="#1B1E24"/></svg>
+          <img src="images/tu-aptomat.jpg" alt="Tủ aptomat âm tường Rạng Đông TAT01-4" loading="lazy" width="400" height="300">
         </div>
         <div class="product-body">
-          <span class="product-series">RD Prime</span>
-          <h4 class="product-name">Tủ điện âm tường 8 module, cửa mờ</h4>
-          <span class="product-code">Mã: PR-TD08 • IP40</span>
+          <span class="product-series">Tủ điện</span>
+          <h4 class="product-name">Tủ aptomat âm tường 4 module</h4>
+          <span class="product-code">Mã: TAT01-4</span>
           <div class="product-foot">
             <span class="price">312.000<small> đ</small></span>
             <button class="add-btn" aria-label="Thêm vào giỏ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14m-7-7h14"/></svg></button>
